@@ -1,0 +1,55 @@
+package com.aitamh.nuvantapp.domain.model;
+
+import com.aitamh.nuvantapp.domain.model.enums.Status;
+import com.aitamh.nuvantapp.domain.model.enums.UnitMeasurement;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Product {
+
+    private Long id;
+
+    private String code;
+
+    private String name;
+
+    private String description;
+
+    private Category category;
+
+    private BigDecimal purchasePrice;
+
+    private BigDecimal salePrice;
+
+    private Integer stock;
+
+    private Integer minStock;
+
+    private String barcode;
+
+    private Status status;
+
+    private UnitMeasurement unitMeasurement;
+
+    private LocalDate expirationDate;
+
+    private Boolean igvAffection;
+
+    private String brand;
+
+    private String supplier;
+
+    private LocalDate creationDate;
+
+    private LocalDate updateDate;
+
+}
