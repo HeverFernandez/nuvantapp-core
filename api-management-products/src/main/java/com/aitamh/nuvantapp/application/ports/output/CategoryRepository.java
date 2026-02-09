@@ -1,19 +1,18 @@
 package com.aitamh.nuvantapp.application.ports.output;
 
+import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.CategoryEntity;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.ProductEntity;
 
 import java.util.List;
 
 public interface CategoryRepository {
 
-    ProductEntity save(ProductEntity producto);
+    CategoryEntity save(CategoryEntity categoryEntity);
 
-    ProductEntity findById(Long id);
+    CategoryEntity findById(Long id);
 
     void deleteById(Long id);
 
-    List<ProductEntity> findAll();
-
-    List<ProductEntity> findByStockLessThan(Integer stockMinimo);
+    List<CategoryEntity> findAll();
 
 }

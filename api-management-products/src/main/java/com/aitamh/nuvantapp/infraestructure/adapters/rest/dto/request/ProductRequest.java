@@ -17,7 +17,6 @@ public record ProductRequest(
         Integer stock,
         Integer minStock,
         String barcode,
-        Status status,
         UnitMeasurement unitMeasurement,
         LocalDate expirationDate,
         Boolean igvAffection,
