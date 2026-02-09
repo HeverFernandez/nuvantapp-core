@@ -1,8 +1,9 @@
 package com.aitamh.nuvantapp.application.ports.input;
 
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.CategoryEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.List;
 
 public interface CategoryService {
 
@@ -12,6 +13,6 @@ public interface CategoryService {
 
     void deleteCategory(Long id);
 
-    List<CategoryEntity> listCategories();
+    Page<CategoryEntity> listCategories(Pageable pageable);
 
 }

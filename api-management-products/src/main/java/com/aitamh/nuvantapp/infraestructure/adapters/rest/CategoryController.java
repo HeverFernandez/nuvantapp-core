@@ -2,10 +2,11 @@ package com.aitamh.nuvantapp.infraestructure.adapters.rest;
 
 import com.aitamh.nuvantapp.application.ports.input.CategoryService;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.CategoryEntity;
+import com.aitamh.nuvantapp.shared.pagination.PaginationResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/categories")
@@ -36,8 +37,8 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryEntity>> listCategories() {
-        List<CategoryEntity> categories = categoryService.listCategories();
-        return ResponseEntity.ok(categories);
+    public ResponseEntity<PaginationResponse<CategoryEntity>> listCategories(Pageable pagination) {
+        Page<CategoryEntity> categories = categoryService.listCategories(pagination);
+        return ResponseEntity.ok(PaginationResponse.fromPage(categories));
     }
 }

@@ -3,9 +3,10 @@ package com.aitamh.nuvantapp.application.services;
 import com.aitamh.nuvantapp.application.ports.input.CategoryService;
 import com.aitamh.nuvantapp.application.ports.output.CategoryRepository;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.CategoryEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -32,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<CategoryEntity> listCategories() {
-        return categoryRepository.findAll();
+    public Page<CategoryEntity> listCategories(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
     }
 }

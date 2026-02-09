@@ -2,9 +2,10 @@ package com.aitamh.nuvantapp.infraestructure.adapters.persistence;
 
 import com.aitamh.nuvantapp.application.ports.output.CategoryRepository;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.CategoryEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
 public class CategoryRepositoryImpl implements CategoryRepository {
@@ -31,8 +32,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public List<CategoryEntity> findAll() {
-        return categoryJpaRepository.findAll();
+    public Page<CategoryEntity> findAll(Pageable pageable) {
+        return categoryJpaRepository.findAll(pageable);
     }
 
 }
