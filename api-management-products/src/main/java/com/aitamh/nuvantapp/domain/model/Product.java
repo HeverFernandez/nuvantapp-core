@@ -1,10 +1,7 @@
 package com.aitamh.nuvantapp.domain.model;
 
 import com.aitamh.nuvantapp.domain.model.enums.Status;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,6 +10,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class Product {
 
     private Long id;

@@ -83,7 +83,7 @@ public class ProductMapper {
         product.setCode(productRequest.code());
         product.setName(productRequest.name());
         product.setDescription(productRequest.description());
-        product.setCategory(productRequest.categoryId());
+        product.setCategory(productRequest.category());
         product.setPurchasePrice(productRequest.purchasePrice());
         product.setSalePrice(productRequest.salePrice());
         product.setStock(productRequest.stock());

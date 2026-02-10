@@ -10,7 +10,7 @@ public record ProductRequest(
         String code,
         String name,
         String description,
-        Category categoryId,
+        Category category,
         BigDecimal purchasePrice,
         BigDecimal salePrice,
         Integer stock,

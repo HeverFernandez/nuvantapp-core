@@ -5,6 +5,8 @@ import com.aitamh.nuvantapp.domain.model.Product;
 import com.aitamh.nuvantapp.application.ports.input.ProductService;
 import com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.request.ProductRequest;
 import com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.response.ProductResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductController {
 
+    private static final Logger log = LoggerFactory.getLogger(ProductController.class);
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
@@ -42,9 +45,15 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductResponse>> listProducts() {
+    public ResponseEntity<List<Product>> listProducts() {
         List<Product> products = productService.listProduct();
-        return ResponseEntity.ok(ProductMapper.toResponseFromModel(products));
+
+        log.info("Retrieved {} products", products.toString());
+
+        var productResponses = ProductMapper.toResponseFromModel(products);
+        log.info("Retrieved {} productResponses", productResponses.toString());
+
+        return ResponseEntity.ok(products);
     }
 
     @GetMapping("/low-stock")
