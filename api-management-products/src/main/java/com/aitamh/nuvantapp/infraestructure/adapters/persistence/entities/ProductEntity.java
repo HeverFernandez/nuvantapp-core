@@ -1,6 +1,5 @@
 package com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities;
 
-import com.aitamh.nuvantapp.domain.model.enums.UnitMeasurement;
 import com.aitamh.nuvantapp.domain.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -32,10 +31,13 @@ public class ProductEntity {
 
     private String description;
 
-//    @Column(nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_category", nullable = false)
     private CategoryEntity categoryEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_unit_measure", nullable = false)
+    private UnitMeasureEntity unitMeasure;
 
     @Column(name = "purchase_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal purchasePrice;
@@ -54,10 +56,6 @@ public class ProductEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private Status status;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
-    private UnitMeasurement unitMeasurement;
 
     @Column(name = "expiration_date")
     private LocalDate expirationDate;

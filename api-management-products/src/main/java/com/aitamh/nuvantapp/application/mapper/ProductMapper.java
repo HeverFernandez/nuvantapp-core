@@ -27,7 +27,7 @@ public class ProductMapper {
         entity.setMinStock(product.getMinStock());
         entity.setBarcode(product.getBarcode());
         entity.setStatus(product.getStatus());
-        entity.setUnitMeasurement(product.getUnitMeasurement());
+        entity.setUnitMeasure(UnitMeasureMapper.toEntity(product.getUnitMeasure()));
         entity.setExpirationDate(product.getExpirationDate());
         entity.setIgvAffection(product.getIgvAffection());
         entity.setBrand(product.getBrand());
@@ -54,7 +54,7 @@ public class ProductMapper {
         product.setMinStock(entity.getMinStock());
         product.setBarcode(entity.getBarcode());
         product.setStatus(entity.getStatus());
-        product.setUnitMeasurement(entity.getUnitMeasurement());
+        product.setUnitMeasure(UnitMeasureMapper.toDomain(entity.getUnitMeasure()));
         product.setExpirationDate(entity.getExpirationDate());
         product.setIgvAffection(entity.getIgvAffection());
         product.setBrand(entity.getBrand());
@@ -89,8 +89,7 @@ public class ProductMapper {
         product.setStock(productRequest.stock());
         product.setMinStock(productRequest.minStock());
         product.setBarcode(productRequest.barcode());
-        product.setStatus(productRequest.status());
-        product.setUnitMeasurement(productRequest.unitMeasurement());
+        product.setUnitMeasure(productRequest.unitMeasurement());
         product.setExpirationDate(productRequest.expirationDate());
         product.setIgvAffection(productRequest.igvAffection());
         product.setBrand(productRequest.brand());
@@ -111,7 +110,6 @@ public class ProductMapper {
         productResponse.setSalePrice(product.getSalePrice());
         productResponse.setStock(product.getStock());
         productResponse.setMinStock(product.getMinStock());
-        productResponse.setUnitMeasurement(product.getUnitMeasurement());
         productResponse.setExpirationDate(product.getExpirationDate());
         productResponse.setIgvAffection(product.getIgvAffection());
         productResponse.setBrand(product.getBrand());

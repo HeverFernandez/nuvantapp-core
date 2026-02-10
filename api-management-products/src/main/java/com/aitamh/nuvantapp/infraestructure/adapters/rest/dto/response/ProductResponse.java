@@ -1,6 +1,5 @@
 package com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.response;
 
-import com.aitamh.nuvantapp.domain.model.enums.UnitMeasurement;
 import lombok.Setter;
 
 import java.math.BigDecimal;
@@ -15,7 +14,6 @@ public class ProductResponse{
     private BigDecimal salePrice;
     private Integer stock;
     private Integer minStock;
-    private UnitMeasurement unitMeasurement;
     private LocalDate expirationDate;
     private Boolean igvAffection;
     private String brand;

@@ -1,8 +1,7 @@
 package com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.request;
 
 import com.aitamh.nuvantapp.domain.model.Category;
-import com.aitamh.nuvantapp.domain.model.enums.Status;
-import com.aitamh.nuvantapp.domain.model.enums.UnitMeasurement;
+import com.aitamh.nuvantapp.domain.model.UnitMeasure;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -17,7 +16,7 @@ public record ProductRequest(
         Integer stock,
         Integer minStock,
         String barcode,
-        UnitMeasurement unitMeasurement,
+        UnitMeasure unitMeasurement,
         LocalDate expirationDate,
         Boolean igvAffection,
         String brand,
