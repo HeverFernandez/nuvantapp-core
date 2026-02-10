@@ -1,6 +1,8 @@
 package com.aitamh.nuvantapp.application.ports.input;
 
 import com.aitamh.nuvantapp.domain.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -12,7 +14,10 @@ public interface ProductService {
 
     void deleteProduct(Long id);
 
-    List<Product> listProduct();
+    Page<Product> listProduct(Pageable pageable);
 
     List<Product> checkLowStock();
+
+    Product productById(Long id);
+
 }

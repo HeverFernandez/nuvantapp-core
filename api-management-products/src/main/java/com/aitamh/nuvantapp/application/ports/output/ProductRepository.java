@@ -1,6 +1,8 @@
 package com.aitamh.nuvantapp.application.ports.output;
 
 import com.aitamh.nuvantapp.domain.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ public interface ProductRepository {
 
     void deleteById(Long id);
 
-    List<Product> findAll();
+    Page<Product> findAll(Pageable pageable);
 
     List<Product> findByStockLessThan(Integer stockMinimo);
 
