@@ -1,11 +1,13 @@
 package com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.response;
 
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Setter
+@ToString
 public class ProductResponse{
     private String code;
     private String name;
