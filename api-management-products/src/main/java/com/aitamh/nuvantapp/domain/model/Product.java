@@ -1,7 +1,6 @@
 package com.aitamh.nuvantapp.domain.model;
 
 import com.aitamh.nuvantapp.domain.model.enums.Status;
-import com.aitamh.nuvantapp.domain.model.enums.UnitMeasurement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +25,8 @@ public class Product {
 
     private Category category;
 
+    private UnitMeasure unitMeasure;
+
     private BigDecimal purchasePrice;
 
     private BigDecimal salePrice;
@@ -37,8 +38,6 @@ public class Product {
     private String barcode;
 
     private Status status;
-
-    private UnitMeasurement unitMeasurement;
 
     private LocalDate expirationDate;
 
