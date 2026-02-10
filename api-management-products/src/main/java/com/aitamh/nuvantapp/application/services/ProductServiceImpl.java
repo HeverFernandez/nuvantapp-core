@@ -3,6 +3,8 @@ package com.aitamh.nuvantapp.application.services;
 import com.aitamh.nuvantapp.application.ports.input.ProductService;
 import com.aitamh.nuvantapp.application.ports.output.ProductRepository;
 import com.aitamh.nuvantapp.domain.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,12 +39,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> listProduct() {
-        return productRepository.findAll();
+    public Page<Product> listProduct(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
     @Override
     public List<Product> checkLowStock() {
         return productRepository.findByStockLessThan(10);
+    }
+
+    @Override
+    public Product productById(Long id) {
+        return productRepository.findById(id);
     }
 }

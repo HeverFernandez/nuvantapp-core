@@ -4,6 +4,8 @@ import com.aitamh.nuvantapp.application.mapper.ProductMapper;
 import com.aitamh.nuvantapp.domain.model.Product;
 import com.aitamh.nuvantapp.application.ports.output.ProductRepository;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.ProductEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -38,10 +40,9 @@ public class ProductRepositoryImpl implements ProductRepository {
     }
 
     @Override
-    public List<Product> findAll() {
-        List<ProductEntity> productEntity = productJpaRepository.findAll();
-
-        return ProductMapper.toModel(productEntity);
+    public Page<Product> findAll(Pageable pageable) {
+        Page<ProductEntity> productEntity = productJpaRepository.findAll(pageable);
+        return productEntity.map(ProductMapper::toModel);
     }
 
     @Override
