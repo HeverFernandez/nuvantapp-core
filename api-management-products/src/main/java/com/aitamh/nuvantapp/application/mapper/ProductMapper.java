@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 
 public class ProductMapper {
 
+//    ProductEntity toEntity(Product product);
+
     public static ProductEntity toEntity(Product product) {
         if (product == null) {
             return null;
@@ -20,7 +22,7 @@ public class ProductMapper {
         entity.setCode(product.getCode());
         entity.setName(product.getName());
         entity.setDescription(product.getDescription());
-        entity.setCategoryEntity(CategoryMapper.toEntity(product.getCategory()));
+        entity.setCategory(CategoryMapper.toEntity(product.getCategory()));
         entity.setPurchasePrice(product.getPurchasePrice());
         entity.setSalePrice(product.getSalePrice());
         entity.setStock(product.getStock());
@@ -37,6 +39,8 @@ public class ProductMapper {
         return entity;
     }
 
+//    Product toModel(ProductEntity entity);
+
     public static Product toModel(ProductEntity entity) {
         if (entity == null) {
             return null;
@@ -47,7 +51,7 @@ public class ProductMapper {
         product.setCode(entity.getCode());
         product.setName(entity.getName());
         product.setDescription(entity.getDescription());
-        product.setCategory(CategoryMapper.toModel(entity.getCategoryEntity()));
+        product.setCategory(CategoryMapper.toModel(entity.getCategory()));
         product.setPurchasePrice(entity.getPurchasePrice());
         product.setSalePrice(entity.getSalePrice());
         product.setStock(entity.getStock());
@@ -64,6 +68,8 @@ public class ProductMapper {
         return product;
     }
 
+//    List<Product> toModel(List<ProductEntity> entities);
+
     public static List<Product> toModel(List<ProductEntity> entities) {
         if (entities == null || entities.isEmpty()) {
             return List.of();
@@ -74,6 +80,8 @@ public class ProductMapper {
                 .collect(Collectors.toList());
     }
 
+//    Product toModelFromRequest(ProductRequest productRequest);
+
     public static Product toModelFromRequest(ProductRequest productRequest) {
         if (productRequest == null) {
             return null;
@@ -83,13 +91,11 @@ public class ProductMapper {
         product.setCode(productRequest.code());
         product.setName(productRequest.name());
         product.setDescription(productRequest.description());
-        product.setCategory(productRequest.category());
         product.setPurchasePrice(productRequest.purchasePrice());
         product.setSalePrice(productRequest.salePrice());
         product.setStock(productRequest.stock());
         product.setMinStock(productRequest.minStock());
         product.setBarcode(productRequest.barcode());
-        product.setUnitMeasure(productRequest.unitMeasurement());
         product.setExpirationDate(productRequest.expirationDate());
         product.setIgvAffection(productRequest.igvAffection());
         product.setBrand(productRequest.brand());
@@ -97,26 +103,30 @@ public class ProductMapper {
         return product;
     }
 
+//    ProductResponse toResponseFromModel(Product product);
+
     public static ProductResponse toResponseFromModel(Product product) {
         if (product == null) {
             return null;
         }
 
-        ProductResponse productResponse = new ProductResponse();
-        productResponse.setCode(product.getCode());
-        productResponse.setName(product.getName());
-        productResponse.setDescription(product.getDescription());
-        productResponse.setPurchasePrice(product.getPurchasePrice());
-        productResponse.setSalePrice(product.getSalePrice());
-        productResponse.setStock(product.getStock());
-        productResponse.setMinStock(product.getMinStock());
-        productResponse.setExpirationDate(product.getExpirationDate());
-        productResponse.setIgvAffection(product.getIgvAffection());
-        productResponse.setBrand(product.getBrand());
-        productResponse.setSupplier(product.getSupplier());
-
-        return productResponse;
+        return new ProductResponse(
+                product.getId(),
+                product.getCode(),
+                product.getName(),
+                product.getDescription(),
+                product.getPurchasePrice(),
+                product.getSalePrice(),
+                product.getStock(),
+                product.getMinStock(),
+                product.getExpirationDate(),
+                product.getIgvAffection(),
+                product.getBrand(),
+                product.getSupplier()
+        );
     }
+
+//    List<ProductResponse> toResponseFromModel(List<Product> products);
 
     public static List<ProductResponse> toResponseFromModel(List<Product> products) {
         if (products == null || products.isEmpty()) {
