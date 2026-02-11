@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 
 @Repository
 public class CategoryRepositoryImpl implements CategoryRepository {
@@ -22,8 +24,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public CategoryEntity findById(Long id) {
-        return categoryJpaRepository.findById(id).orElse(null);
+    public Optional<CategoryEntity> findById(Long id) {
+        return categoryJpaRepository.findById(id);
     }
 
     @Override

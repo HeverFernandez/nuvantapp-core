@@ -1,12 +1,17 @@
 package com.aitamh.nuvantapp.infraestructure.adapters.rest;
 
 import com.aitamh.nuvantapp.application.mapper.ProductMapper;
+import com.aitamh.nuvantapp.application.ports.input.CategoryService;
+import com.aitamh.nuvantapp.domain.model.Category;
 import com.aitamh.nuvantapp.domain.model.Product;
 import com.aitamh.nuvantapp.application.ports.input.ProductService;
+import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.CategoryEntity;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.ProductEntity;
 import com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.request.ProductRequest;
 import com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.response.ProductResponse;
 import com.aitamh.nuvantapp.shared.pagination.PaginationResponse;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +20,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -22,15 +28,10 @@ public class ProductController {
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
     private final ProductService productService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
-    }
-
     @PostMapping
-    public ResponseEntity<ProductEntity> createProduct(@RequestBody ProductRequest productRequest) {
-        Product product = ProductMapper.toModelFromRequest(productRequest);
-        Product createdProduct = productService.createProduct(product);
-        return ResponseEntity.ok(ProductMapper.toEntity(createdProduct));
+    public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody ProductRequest productRequest) {
+        ProductResponse createdProduct = productService.createProduct(productRequest);
+        return ResponseEntity.ok(createdProduct);
     }
 
     @PutMapping("/{id}")
@@ -48,8 +49,9 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<PaginationResponse<Product>> listProducts(Pageable pagination) {
-        Page<Product> products = productService.listProduct(pagination);
+    public ResponseEntity<PaginationResponse<ProductResponse>> listProducts(Pageable pagination) {
+        Page<ProductResponse> products = productService.listProduct(pagination);
+        log.info("Controller:: Listing products with pagination: {}", products.stream().toList());
         return ResponseEntity.ok(PaginationResponse.fromPage(products));
     }
 

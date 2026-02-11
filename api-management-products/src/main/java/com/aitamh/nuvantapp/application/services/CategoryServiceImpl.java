@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -35,5 +37,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Page<CategoryEntity> listCategories(Pageable pageable) {
         return categoryRepository.findAll(pageable);
+    }
+
+    @Override
+    public Optional<CategoryEntity> getCategoryById(Long id) {
+        return categoryRepository.findById(id);
     }
 }

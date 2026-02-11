@@ -4,6 +4,8 @@ import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.Catego
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Optional;
+
 
 public interface CategoryService {
 
@@ -15,4 +17,5 @@ public interface CategoryService {
 
     Page<CategoryEntity> listCategories(Pageable pageable);
 
+    Optional<CategoryEntity> getCategoryById(Long id);
 }

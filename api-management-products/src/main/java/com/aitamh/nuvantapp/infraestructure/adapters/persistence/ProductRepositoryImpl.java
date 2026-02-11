@@ -4,20 +4,18 @@ import com.aitamh.nuvantapp.application.mapper.ProductMapper;
 import com.aitamh.nuvantapp.domain.model.Product;
 import com.aitamh.nuvantapp.application.ports.output.ProductRepository;
 import com.aitamh.nuvantapp.infraestructure.adapters.persistence.entities.ProductEntity;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
     private final ProductJpaRepository productJpaRepository;
-
-    ProductRepositoryImpl( ProductJpaRepository productJpaRepository) {
-        this.productJpaRepository = productJpaRepository;
-    }
 
     @Override
     public Product save(Product producto) {
