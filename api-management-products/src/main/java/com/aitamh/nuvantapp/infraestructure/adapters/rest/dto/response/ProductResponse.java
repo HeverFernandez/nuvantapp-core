@@ -1,6 +1,8 @@
 package com.aitamh.nuvantapp.infraestructure.adapters.rest.dto.response;
 
 
+import com.aitamh.nuvantapp.domain.model.Category;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -16,6 +18,7 @@ public record ProductResponse(
         LocalDate expirationDate,
         Boolean igvAffection,
         String brand,
-        String supplier
+        String supplier,
+        Category category
   ) {
 }

@@ -122,7 +122,8 @@ public class ProductMapper {
                 product.getExpirationDate(),
                 product.getIgvAffection(),
                 product.getBrand(),
-                product.getSupplier()
+                product.getSupplier(),
+                product.getCategory()
         );
     }
 

@@ -24,7 +24,9 @@
 	<modules>
 		<module>api-management-sales</module>
 		<module>api-management-products</module>
-	</modules>
+		<module>api-management-generic</module>
+        <module>api-management-employees</module>
+    </modules>
 	<scm>
 		<connection/>
 		<developerConnection/>
